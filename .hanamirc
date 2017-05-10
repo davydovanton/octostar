@@ -1,0 +1,4 @@
+project=octostar
+architecture=container
+test=rspec
+template=slim

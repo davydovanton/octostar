@@ -1,0 +1,2 @@
+module Octostar
+end

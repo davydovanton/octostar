@@ -15,6 +15,7 @@ gem 'web_bouncer',     github: 'davydovanton/web_bouncer'
 gem 'slim'
 gem 'hanami-bootstrap'
 gem 'jquery-hanami'
+gem 'sass'
 
 group :development do
   # Code reloading

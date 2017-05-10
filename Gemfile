@@ -7,6 +7,8 @@ gem 'hanami-model', '~> 1.0'
 gem 'pg'
 
 gem 'slim'
+gem 'hanami-bootstrap'
+gem 'jquery-hanami'
 
 group :development do
   # Code reloading

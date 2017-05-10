@@ -12,10 +12,10 @@ private
   end
 
   def authenticated?
-    !!current_account
+    !!current_account.id
   end
 
   def current_account
-    session[:account]
+    @current_account ||= Account.new(session[:account])
   end
 end

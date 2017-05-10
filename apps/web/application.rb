@@ -261,6 +261,7 @@ module Web
       controller.prepare do
         # include MyAuthentication # included in all the actions
         # before :authenticate!    # run an authentication before callback
+        include WebBouncer['authentication']
       end
 
       # Configure the code that will yield each time Web::View is included

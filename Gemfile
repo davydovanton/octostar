@@ -6,6 +6,12 @@ gem 'hanami-model', '~> 1.0'
 
 gem 'pg'
 
+# auth
+gem 'omniauth'
+gem 'omniauth-github', github: 'intridea/omniauth-github'
+gem 'web_bouncer',     github: 'davydovanton/web_bouncer'
+
+# view
 gem 'slim'
 gem 'hanami-bootstrap'
 gem 'jquery-hanami'

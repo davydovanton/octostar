@@ -41,8 +41,8 @@ class StarredProjectsGetter
     params = {
       username: username,
       page: page,
-      github_id: ENV['GITHUB_API_ID'],
-      github_key: ENV['GITHUB_API_KEY']
+      github_id: ENV['GITHUB_KEY'],
+      github_key: ENV['GITHUB_SECRET']
     }
 
     response = HttpRequest.new(API_URL % params).get

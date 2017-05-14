@@ -15,3 +15,32 @@
     margin: 30px 0;
   }
 }
+
+
+.project {
+  padding: 3% 2%;
+  font-size: 26px;
+
+  &:hover {
+    background-color: #eee;
+  }
+
+  .project__title {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+
+    .project__name {
+      a { color: #333; }
+    }
+
+    .project__lang {
+      color: #aaa;
+    }
+  }
+
+  .project__description {
+    font-size: 18px;
+    color: #999;
+  }
+}

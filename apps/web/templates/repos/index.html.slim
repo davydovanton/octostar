@@ -1,7 +1,13 @@
 - if current_account.id
-  .projects
-    - projects.each do |project|
-      .projects__title = title(project)
+
+  .row
+    .col-md-6.col-md-offset-3.projects
+        - projects.each do |project|
+          .project
+            .project__title
+              .project__name = title(project)
+              .project__lang = project.language
+            .project__description = project.description
 
 - else
   = render partial: 'shared/promo'

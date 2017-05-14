@@ -6,7 +6,8 @@ RSpec.describe Web::Views::Repos::Index do
   let(:view)      { described_class.new(template, exposures) }
   let(:rendered)  { view.render }
 
-  it 'exposes #foo' do
-    expect(view.foo).to eq exposures.fetch(:foo)
+  describe '#title' do
+    let(:project) { Project.new(name: 'test', owner: 'owner', url: 'google.com') }
+    it { expect(view.title(project).to_s).to eq "<a target=\"_blank\" href=\"google.com\">owner&#x2F;test</a>" }
   end
 end

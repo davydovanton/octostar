@@ -8,7 +8,9 @@ module Web::Controllers::Repos
     end
 
     def call(params)
-      @projects = repo.find_by_account(current_account.id) if authenticated?
+      if authenticated?
+        @projects = repo.find_by_account(current_account.id, params[:query])
+      end
     end
 
     private

@@ -2,7 +2,7 @@
   .row
     .col-md-6.col-md-offset-3
       form.search_form action="/" method="get"
-        input.search_form__query type="text" name="query" placeholder="Search..."
+        input.search_form__query type="text" name="query" placeholder="Search..." value=params[:query]
         input.search_form__submit type="submit" value="Submit"
 
       .projects

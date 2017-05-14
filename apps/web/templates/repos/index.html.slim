@@ -1,4 +1,9 @@
 - if current_account.id
   h1 Repos
+
+  .projects
+    - projects.each do |project|
+      .projects__name = project.name
+
 - else
   = render partial: 'shared/promo'

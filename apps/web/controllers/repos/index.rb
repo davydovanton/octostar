@@ -3,6 +3,10 @@ module Web::Controllers::Repos
     include Web::Action
     expose :projects
 
+    def initialize
+      @projects = []
+    end
+
     def call(params)
       @projects = repo.find_by_account(current_account.id) if authenticated?
     end

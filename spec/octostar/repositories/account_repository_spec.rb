@@ -13,4 +13,9 @@ RSpec.describe AccountRepository do
       it { expect(repo.find_by_login('davydovanton')).to be_a Account }
     end
   end
+
+  describe '#find_with_projects' do
+    let(:account) { repo.create(login: 'davydovanton') }
+    it { expect(repo.find_with_projects(account.id).projects).to eq [] }
+  end
 end

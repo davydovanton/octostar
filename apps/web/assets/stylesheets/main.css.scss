@@ -16,7 +16,6 @@
   }
 }
 
-
 .project {
   padding: 3% 2%;
   font-size: 26px;
@@ -42,5 +41,41 @@
   .project__description {
     font-size: 18px;
     color: #999;
+  }
+}
+
+.search_form {
+  font-size: 24px;
+  margin: 3% 0;
+  overflow: hidden;
+  vertical-align: middle;
+  background-color: #eee;
+  display: flex;
+  flex-wrap: nowrap;
+
+  &:hover .search_form__submit,
+  &:active .search_form__submit,
+  &:focus .search_form__submit {
+    outline: none;
+    opacity: 1;
+  }
+
+  .search_form__query {
+    border: 0;
+    background-color: #eee;
+    padding: 2% 2%;
+    flex-grow: 2;
+  }
+
+  .search_form__submit {
+    padding: 2% 1%;
+    flex-grow: 1;
+
+    opacity: 0;
+    -webkit-transition: all .55s ease;
+    -moz-transition: all .55s ease;
+    -ms-transition: all .55s ease;
+    -o-transition: all .55s ease;
+    transition: all .55s ease;
   }
 }

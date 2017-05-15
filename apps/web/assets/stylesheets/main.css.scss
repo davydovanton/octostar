@@ -42,6 +42,22 @@
     font-size: 18px;
     color: #999;
   }
+
+  .project__topics {
+    font-size: 16px;
+    line-height: 30px;
+
+    .topic {
+      color: #333;
+      margin: 0 5px 5px 0;
+      background-color: #ddd;
+      padding: 3px 5px;
+
+      &:hover {
+        background-color: #ccc;
+      }
+    }
+  }
 }
 
 .search_form {

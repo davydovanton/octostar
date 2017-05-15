@@ -29,7 +29,7 @@ class StarredProjectsGetter
         private: data['repo']['private'],
         language: data['repo']['language'],
         stargazers_count: data['repo']['stargazers_count'],
-        topics: data['repo']['topics'] || [],
+        topics: Array(data['repo']['topics']),
         account_id: account_id,
         starred_at:  Time.parse(data['starred_at']),
         created_at:  Time.parse(data['repo']['created_at']),

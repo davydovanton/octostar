@@ -12,6 +12,9 @@
               .project__name = title(project)
               .project__lang = project.language
             .project__description = project.description
+            .project__topics
+              - project.topics.each do |topic|
+                span.topic = topic
 
 - else
   = render partial: 'shared/promo'

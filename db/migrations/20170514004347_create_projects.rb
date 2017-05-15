@@ -10,6 +10,7 @@ Hanami::Model.migration do
       column :language,    String, default: 'undefined'
       column :description, String
       column :private,     FalseClass, default: false
+      column :topics,      "text[]"
 
       column :stargazers_count, Integer
 

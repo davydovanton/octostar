@@ -5,6 +5,7 @@ class ProjectRepository < Hanami::Repository
     query = text_search(query, search[:text])
     query = author_search(query, search[:author])
     query = language_search(query, search[:lang])
+    query = tags_search(query, search[:tag])
 
     query.as(Project).to_a
   end
@@ -30,5 +31,15 @@ private
 
     lang = "%#{lang}%"
     query.where { lower(language).like(lang) }
+  end
+
+  def tags_search(query, tag)
+    return query if tag.nil?
+
+    Array(tag).each do |topic|
+      topic = "%#{topic}%"
+      query = query.where { array_to_string(topics, ',').like(topic) }
+    end
+    query
   end
 end

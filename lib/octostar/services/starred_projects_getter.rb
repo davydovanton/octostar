@@ -5,6 +5,10 @@ class StarredProjectsGetter
 
   COMMITS_COUNT_ON_PAGE = 100
 
+  def initialize(requester = HttpRequest)
+    @requester = requester
+  end
+
   def call(account)
     projects = []
 
@@ -45,7 +49,7 @@ class StarredProjectsGetter
       github_key: ENV['GITHUB_SECRET']
     }
 
-    response = HttpRequest.new(API_URL % params).get
+    response = @requester.new(API_URL % params).get
     return [] unless response.is_a?(Net::HTTPSuccess)
 
     JSON.parse(response.body)

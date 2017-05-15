@@ -1,8 +1,8 @@
 RSpec.describe SearchQueryParser do
   let(:search) { SearchQueryParser.new }
 
-  it { expect(search.call('')).to eq({}) }
-  it { expect(search.call('text')).to eq(author: nil, text: 'text') }
-  it { expect(search.call('author:davydovanton')).to eq(author: 'davydovanton', text: nil) }
-  it { expect(search.call('author:davydovanton text')).to eq(author: 'davydovanton', text: 'text') }
+  it { expect(SearchQueryParser.new('').call).to eq(text: nil) }
+  it { expect(SearchQueryParser.new('text').call).to eq(text: 'text') }
+  it { expect(SearchQueryParser.new('author:davydovanton').call).to eq(author: 'davydovanton', text: nil) }
+  it { expect(SearchQueryParser.new('author:davydovanton text').call).to eq(author: 'davydovanton', text: 'text') }
 end

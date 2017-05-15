@@ -1,17 +1,40 @@
+require 'strscan'
+
 class SearchQueryParser
-  AUTHOR_REGEXP = /.*author\:(\w+)(\s.+)?/
-  EMPTY_STRING = ''
+  OPTION_TOKEN = /\w+:\w+/
+  SPASE_TOKEN = /\s/
 
-  def call(text)
-    return {} if text.nil? || text.empty?
+  SEPARATOR_CHAR = ':'
 
-    author = text[AUTHOR_REGEXP] && $1
-    text = text.sub(/author:#{author}\s?/, EMPTY_STRING) if author
-    text = nil if text.empty?
-
-    {
-      author: author,
-      text: text
-    }
+  def initialize(query)
+    @scanner = StringScanner.new(query.to_s)
+    @options = {}
   end
+
+  def call
+    scan_options
+    text = scanner.scan(/.+/)
+    { text: text, **options }
+  end
+
+  private
+
+  def scan_options
+    while token = scanner.scan(OPTION_TOKEN)
+      process_option_toker(options, token)
+      scanner.scan(SPASE_TOKEN)
+    end
+  end
+
+  def process_option_toker(options, token)
+    node, value = token.split(SEPARATOR_CHAR)
+
+    if options[node.to_sym]
+      options[node.to_sym] = Array(options[node.to_sym]) << value
+    else
+      options[node.to_sym] = value
+    end
+  end
+
+  attr_reader :options, :scanner
 end

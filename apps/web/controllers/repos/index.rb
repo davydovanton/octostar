@@ -9,7 +9,8 @@ module Web::Controllers::Repos
 
     def call(params)
       if authenticated?
-        @projects = repo.find_by_account(current_account.id, params[:query])
+        search_params = SearchQueryParser.new.call(params[:query])
+        @projects = repo.find_by_account(current_account.id, search_params)
       end
     end
 

@@ -1,9 +1,9 @@
 class ProjectRepository < Hanami::Repository
-  def find_by_account(account_id, text = nil)
+  def find_by_account(account_id, search = {})
 
     query = projects.where(account_id: account_id)
 
-    if text
+    if search[:text]
       text = "%#{text}%"
       query = query.where { name.like(text) | description.like(text) }
     end

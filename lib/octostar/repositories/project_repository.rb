@@ -4,6 +4,7 @@ class ProjectRepository < Hanami::Repository
     query = projects.where(account_id: account_id)
     query = text_search(query, search[:text])
     query = author_search(query, search[:author])
+    query = language_search(query, search[:lang])
 
     query.as(Project).to_a
   end
@@ -11,20 +12,23 @@ class ProjectRepository < Hanami::Repository
 private
 
   def text_search(query, text)
-    if text
-      text = "%#{text}%"
-      query.where { name.like(text) | description.like(text) }
-    else
-      query
-    end
+    return query if text.nil?
+
+    text = "%#{text}%"
+    query.where { name.like(text) | description.like(text) }
   end
 
   def author_search(query, author)
-    if author
-      author = "%#{author}%"
-      query.where { owner.like(author) }
-    else
-      query
-    end
+    return query if author.nil?
+
+    author = "%#{author}%"
+    query.where { owner.like(author) }
+  end
+
+  def language_search(query, lang)
+    return query if lang.nil?
+
+    lang = "%#{lang}%"
+    query.where { lower(language).like(lang) }
   end
 end

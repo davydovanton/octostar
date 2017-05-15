@@ -7,7 +7,7 @@ class HttpRequest
 
   def get
     request = Net::HTTP::Get.new(uri.request_uri)
-    request['Accept'] = 'application/vnd.github.v3.star+json'
+    request['Accept'] = 'application/vnd.github.v3.star+json;application/vnd.github.mercy-preview+json'
     yield request if block_given?
 
     http(uri).request(request)

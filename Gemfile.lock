@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/davydovanton/hanami-bootstrap.git
-  revision: 422a23cc1e7057f930e9ed887f3a73834856f108
+  revision: c46b8e2adf33d9a95166ae214e12a7b004e866b3
   specs:
     hanami-bootstrap (0.4.0)
       hanami-assets (>= 0.2, < 2)

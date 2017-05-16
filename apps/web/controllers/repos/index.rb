@@ -9,6 +9,8 @@ module Web::Controllers::Repos
 
     def call(params)
       if authenticated?
+        params[:query].gsub!(/[^\w:\s]/, '') if params[:query]
+
         search_params = SearchQueryParser.new(params[:query]).call
         @projects = repo.find_by_account(current_account.id, search_params)
       end

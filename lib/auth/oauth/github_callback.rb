@@ -1,7 +1,11 @@
 class GithubCallback < WebBouncer::OauthCallback
   def call(oauth_response)
     account = repo.find_by_login(oauth_response['info']['nickname'])
-    repo.create(oauth_data(oauth_response)) unless account
+
+    unless account
+      account = repo.create(oauth_data(oauth_response))
+      GetStarredProjectsWorker.perform_async(account.id)
+    end
     Right(account)
   end
 

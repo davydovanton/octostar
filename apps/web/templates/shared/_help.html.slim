@@ -1,0 +1,24 @@
+.help
+  .help__control
+    a role="button" data-toggle="collapse" href="#help__block" aria-expanded="false" aria-controls="help__block"
+      | Help
+
+  #help__block.collapse
+    code#help__text
+      | You can use filters lile:
+      br
+      | * **author** search by author;
+      br
+      | * **tag** search by specific tag (can be 1+);
+      br
+      | * **lang** search by language;
+      br
+      br
+      | Examples (if you starred devise):
+      br
+      br
+      | ```
+      br
+      | author:plataform lang:ruby tag:rails authentication solution
+      br
+      | ```

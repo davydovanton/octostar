@@ -95,3 +95,19 @@
     transition: all .55s ease;
   }
 }
+
+.help {
+  .help__control {
+    text-align: right;
+    a {
+      color: #aaa;
+      text-decoration: underline;
+      text-decoration-style: dotted;
+    }
+  }
+
+  code {
+    color: #555;
+    background-color: #fff;
+  }
+}

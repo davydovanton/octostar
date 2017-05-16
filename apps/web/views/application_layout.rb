@@ -7,11 +7,11 @@ module Web
         html.div(class: 'footer row') do
           div(class: 'col-md-4 col-md-offset-4 center') do
             text '© 2017'
-            a(href: '#') { 'Anton Davydov,' }
+            a(href: 'https://github.com/davydovanton/') { 'Anton Davydov,' }
             text 'et al —'
-            a(href: '#') { 'Source' }
+            a(href: 'https://github.com/davydovanton/octostar') { 'Source' }
             text 'available under'
-            a(href: '#') { 'MIT' }
+            a(href: 'https://github.com/davydovanton/octostar/blob/master/LICENSE.txt') { 'MIT' }
           end
         end
       end

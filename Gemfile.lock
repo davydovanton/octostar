@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/davydovanton/hanami-bootstrap.git
+  revision: 422a23cc1e7057f930e9ed887f3a73834856f108
+  specs:
+    hanami-bootstrap (0.4.0)
+      hanami-assets (>= 0.2, < 2)
+
+GIT
   remote: git://github.com/davydovanton/web_bouncer.git
   revision: f3dfd8ac7338ae425c2c87f8e4beab17e6bb0ebd
   specs:
@@ -90,8 +97,6 @@ GEM
       hanami-helpers (~> 1.0)
       hanami-utils (~> 1.0)
       tilt (~> 2.0, >= 2.0.2)
-    hanami-bootstrap (0.4.0)
-      hanami-assets (>= 0.2, < 2)
     hanami-controller (1.0.0)
       hanami-utils (~> 1.0)
       rack (~> 2.0)
@@ -242,7 +247,7 @@ DEPENDENCIES
   connection_pool
   dotenv (~> 2.0)
   hanami (~> 1.0)
-  hanami-bootstrap
+  hanami-bootstrap!
   hanami-model (~> 1.0)
   hiredis
   jquery-hanami

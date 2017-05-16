@@ -6,7 +6,7 @@ class ProjectRepository < Hanami::Repository
     query = language_search(query, search[:lang])
     query = tags_search(query, search[:tag])
 
-    query.as(Project).to_a
+    query.order{ starred_at.desc }.as(Project).to_a
   end
 
 private

@@ -1,9 +1,12 @@
-.help
-  .help__control
-    a role="button" data-toggle="collapse" href="#help__block" aria-expanded="false" aria-controls="help__block"
+.actions
+  .actions__control
+    a role="button" data-toggle="collapse" href="#help" aria-expanded="false" aria-controls="help"
       | Help
 
-  #help__block.collapse
+    a href="/auth/logout"
+      | Logout
+
+  #help.collapse
     code#help__text
       | You can use filters lile:
       br

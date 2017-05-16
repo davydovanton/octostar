@@ -103,13 +103,16 @@
   }
 }
 
-.help {
-  .help__control {
+.actions {
+  margin: 0 0 20px;
+
+  .actions__control {
     text-align: right;
     a {
       color: #aaa;
       text-decoration: underline;
       text-decoration-style: dotted;
+      margin: 0 0 0 10px;
     }
   }
 

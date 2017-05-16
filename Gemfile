@@ -17,6 +17,16 @@ gem 'hanami-bootstrap'
 gem 'jquery-hanami'
 gem 'sass'
 
+# background
+gem 'sidekiq'
+gem 'sidekiq-scheduler'
+
+# redis
+gem 'redis', '~>3.2'
+gem 'hiredis'
+gem 'mock_redis'
+gem 'connection_pool'
+
 group :development do
   # Code reloading
   # See: http://hanamirb.org/guides/projects/code-reloading

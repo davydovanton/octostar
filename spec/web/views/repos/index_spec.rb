@@ -13,16 +13,22 @@ RSpec.describe Web::Views::Repos::Index do
 
   describe '#waiting_projects' do
     context 'when projects exist' do
-      let(:exposures) { Hash[projects: [1]] }
+      let(:exposures) { Hash[projects: [1], params: {} ] }
       it { expect(view.waiting_projects.to_s).to eq "" }
     end
 
-    context 'when does not projects exist' do
+    context 'when account does not have projects' do
+      let(:exposures) { Hash[projects: [], params: {} ] }
       it do
         expect(view.waiting_projects.to_s).to eq(
           "<div class=\"projects__waiting\">\nWe are getting your starred projects...\n<br>\nPlease reload the page in few minutes.\n</div>"
         )
       end
+    end
+
+    context 'when result empty' do
+      let(:exposures) { Hash[projects: [1], params: {} ] }
+      it { expect(view.waiting_projects.to_s).to eq '' }
     end
   end
 end

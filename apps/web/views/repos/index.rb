@@ -7,7 +7,7 @@ module Web::Views::Repos
     end
 
     def waiting_projects
-      if projects.empty?
+      if projects.empty? && params[:query].nil?
         html.div(class: 'projects__waiting') do
           text('We are getting your starred projects...')
           br

@@ -154,6 +154,7 @@ GEM
       omniauth (~> 1.2)
     pg (0.20.0)
     public_suffix (2.0.5)
+    puma (3.8.2)
     rack (2.0.2)
     rack-protection (1.5.3)
       rack
@@ -249,6 +250,7 @@ DEPENDENCIES
   omniauth
   omniauth-github!
   pg
+  puma
   rake
   redis (~> 3.2)
   rspec

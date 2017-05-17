@@ -3,7 +3,7 @@ class ProjectRepository < Hanami::Repository
     query = projects.where(account_id: account_id)
     query = text_search(query, search[:text])
     query = author_search(query, search[:author])
-    query = language_search(query, search[:lang])
+    query = language_search(query, search[:lang] || search[:language])
     query = tags_search(query, search[:tag])
 
     query.order{ starred_at.desc }.as(Project).to_a

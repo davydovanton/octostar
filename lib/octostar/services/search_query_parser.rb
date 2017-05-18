@@ -20,6 +20,8 @@ class SearchQueryParser
   private
 
   def scan_options
+    scanner.scan(SPASE_TOKEN)
+
     while token = scanner.scan(OPTION_TOKEN)
       process_option_toker(options, token)
       scanner.scan(SPASE_TOKEN)

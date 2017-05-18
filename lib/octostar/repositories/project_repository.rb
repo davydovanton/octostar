@@ -1,12 +1,12 @@
 class ProjectRepository < Hanami::Repository
-  def find_by_account(account_id, search = {})
+  def find_by_account(account_id, search = {}, limit = 100)
     query = projects.where(account_id: account_id)
     query = text_search(query, search[:text])
     query = author_search(query, search[:author])
     query = language_search(query, search[:lang] || search[:language])
     query = tags_search(query, search[:tag])
 
-    query.order{ starred_at.desc }.limit(100).as(Project).to_a
+    query.order{ starred_at.desc }.limit(limit).as(Project).to_a
   end
 
 private

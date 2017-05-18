@@ -3,13 +3,15 @@ module Web::Controllers::Repos
     include Web::Action
     expose :projects
 
+    INVALID_CHARS = /[^\w:\s+-]/
+
     def initialize
       @projects = []
     end
 
     def call(params)
       if authenticated?
-        params[:query].gsub!(/[^\w:\s]/, '') if params[:query]
+        params[:query].gsub!(INVALID_CHARS, '') if params[:query]
 
         search_params = SearchQueryParser.new(params[:query]).call
         @projects = repo.find_by_account(current_account.id, search_params, limit)

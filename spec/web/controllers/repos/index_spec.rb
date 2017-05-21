@@ -26,6 +26,16 @@ RSpec.describe Web::Controllers::Repos::Index do
       action.call(params)
       expect(action.projects.count).to eq 1
     end
+
+    context 'and limit sets' do
+      before { project_repo.create(name: 'test', starred_at: Time.now, account_id: account.id) }
+      let(:params)  { { 'rack.session' => session, limit: 1 } }
+
+      it 'returns only one project' do
+        action.call(params)
+        expect(action.projects.count).to eq 1
+      end
+    end
   end
 
   context 'when account logined' do

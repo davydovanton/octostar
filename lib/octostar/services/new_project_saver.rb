@@ -7,12 +7,11 @@ class NewProjectSaver
   def call(id)
     account = account_repo.find_with_projects(id)
     project_names = account.projects.map(&:name)
-    projects = StarredProjectsGetter.new.call(account)
+    projects = StarredProjectsGetter.new
+      .call(account)
+      .select { |p| !project_names.include?(p[:name]) }
 
-    projects.each do |project|
-      next if project_names.include?(project[:name])
-      project_repo.create(project)
-    end
+    project_repo.create(projects)
   end
 
   private

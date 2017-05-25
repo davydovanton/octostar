@@ -9,6 +9,9 @@ Improved search for your starred github repositories
 ## Motivation
 
 ## How to use
+1. open site
+2. login by github
+3. put query to firld and that's all
 
 ## Development
 

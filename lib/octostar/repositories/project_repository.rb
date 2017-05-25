@@ -1,4 +1,5 @@
 class ProjectRepository < Hanami::Repository
+  # TODO: tests
   def find_by_account(account_id, search = {}, limit = 100)
     query = projects.where(account_id: account_id)
     query = text_search(query, search[:text])

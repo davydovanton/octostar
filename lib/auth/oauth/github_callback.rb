@@ -1,9 +1,12 @@
+# TODO: add tests for oauth
 class GithubCallback < WebBouncer::OauthCallback
   def call(oauth_response)
     account = repo.find_by_login(oauth_response['info']['nickname'])
 
     unless account
       account = repo.create(oauth_data(oauth_response))
+
+      # TODO: add tests for sidekiq worker
       GetStarredProjectsWorker.perform_async(account.id)
     end
     Right(account)

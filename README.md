@@ -13,6 +13,20 @@ Improved search for your starred github repositories
 2. login by github
 3. put query to firld and that's all
 
+### Queries
+```
+You can use filters like:
+- **author** search by author;
+- **tag** search by specific tag (can be 1+);
+- **lang (language)** search by language;
+
+Examples (if you starred devise):
+
+```
+author:plataform lang:ruby tag:rails authentication solution
+```
+```
+
 ## Development
 
 ## Copyright

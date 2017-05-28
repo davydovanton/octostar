@@ -29,6 +29,13 @@ author:plataform lang:ruby tag:rails authentication solution
 
 ## Development
 
+## TODO
+* tests
+* implement sync repos button
+* add development part to readme
+* add "push to heroku" button to readme
+* display error if option not found
+
 ## Copyright
 
 Released under MIT License.

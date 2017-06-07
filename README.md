@@ -25,7 +25,6 @@ Examples (if you starred devise):
 ```
 author:plataform lang:ruby tag:rails authentication solution
 ```
-```
 
 ## Development
 

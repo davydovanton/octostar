@@ -2,6 +2,8 @@
 ENV['HANAMI_ENV'] ||= 'test'
 
 require 'rspec/hanami'
+require 'sidekiq/testing'
+Sidekiq::Testing.fake!
 
 require_relative '../config/environment'
 Hanami.boot

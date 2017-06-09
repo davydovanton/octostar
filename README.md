@@ -28,6 +28,13 @@ author:plataform lang:ruby tag:rails authentication solution
 
 ## Development
 
+1. clone project
+2. call this commands (for `HANAMI_ENV=test` too)
+```
+bundle exec hanami db create
+bundle exec hanami db migrate
+```
+
 ## TODO
 * tests
 * implement sync repos button

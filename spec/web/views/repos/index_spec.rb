@@ -11,6 +11,23 @@ RSpec.describe Web::Views::Repos::Index do
     it { expect(view.title(project).to_s).to eq "<a target=\"_blank\" href=\"google.com\">owner&#x2F;test</a>" }
   end
 
+  describe '#error_message' do
+    context 'when invalid params missing' do
+      let(:exposures) { { invalid_params: nil } }
+      it { expect(view.error_message.to_s).to eq '' }
+    end
+
+    context 'when invalid params missing' do
+      let(:exposures) { { invalid_params: [] } }
+      it { expect(view.error_message.to_s).to eq '' }
+    end
+
+    context 'when invalid params contain something' do
+      let(:exposures) { { invalid_params: ['test:test'] } }
+      it { expect(view.error_message.to_s).to eq "<div class=\".errors\">\nImvalid commands test:test\n</div>" }
+    end
+  end
+
   describe '#waiting_projects' do
     context 'when projects exist' do
       let(:exposures) { Hash[projects: [1], params: {} ] }

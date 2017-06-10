@@ -27,6 +27,11 @@ RSpec.describe Web::Controllers::Repos::Index do
       expect(action.projects.count).to eq 1
     end
 
+    it 'does not contain invalid params' do
+      action.call(params)
+      expect(action.invalid_params).to eq []
+    end
+
     context 'and limit sets' do
       before { project_repo.create(name: 'test', starred_at: Time.now, account_id: account.id) }
       let(:params)  { { 'rack.session' => session, limit: 1 } }
@@ -38,7 +43,7 @@ RSpec.describe Web::Controllers::Repos::Index do
     end
   end
 
-  context 'when account logined' do
+  context 'when account not logined' do
     it { expect(action.call(params)).to be_success }
 
     it 'does not contain projects' do

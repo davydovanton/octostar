@@ -15,5 +15,11 @@ module Web::Views::Repos
         end
       end
     end
+
+    def error_message
+      if invalid_params && invalid_params.any?
+        html.div(class: '.errors') { text "Imvalid commands #{invalid_params.join(', ')}" }
+      end
+    end
   end
 end

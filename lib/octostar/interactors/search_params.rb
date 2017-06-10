@@ -6,11 +6,12 @@ class SearchParams
 
   def initialize(query)
     @query = query
+    @query.gsub!(INVALID_CHARS, '') if @query
   end
 
   def call
-    @query.gsub!(INVALID_CHARS, '') if @query
-    @params = SearchQueryParser.new(@query).call
+    options = SearchQueryParser.new(@query).call
+    @params = options.select { |key, _| VALID_COMMANDS.include?(key) }
   end
 
   private

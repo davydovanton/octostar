@@ -7,7 +7,8 @@ RSpec.describe SearchParams do
 
   context 'when query contain invalid command' do
     let(:query) { 'test:plataform tag:rails solution' }
+
     it { expect(result.params).to eq(text: "solution", tag: "rails") }
-    it { expect(result.error_messages).to eq(['invalid command "test"']) }
+    it { expect(result.error_messages).to eq(['invalid command "test:platform"']) }
   end
 end

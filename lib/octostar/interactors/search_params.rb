@@ -2,7 +2,7 @@ require 'hanami/interactor'
 
 class SearchParams
   include Hanami::Interactor
-  expose :params, :errors
+  expose :params, :error_messages
 
   def initialize(query)
     @query = query
@@ -16,4 +16,5 @@ class SearchParams
   private
 
   INVALID_CHARS = /[^\w:\s+-]/
+  VALID_COMMANDS = %i[author tag lang text]
 end

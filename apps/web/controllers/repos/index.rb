@@ -1,9 +1,7 @@
 module Web::Controllers::Repos
   class Index
     include Web::Action
-    expose :projects
-
-    INVALID_CHARS = /[^\w:\s+-]/
+    expose :projects, :invalid_params
 
     def initialize
       @projects = []
@@ -11,10 +9,10 @@ module Web::Controllers::Repos
 
     def call(params)
       if authenticated?
-        params[:query].gsub!(INVALID_CHARS, '') if params[:query]
+        result = SearchParams.new(params[:query]).call
 
-        search_params = SearchQueryParser.new(params[:query]).call
-        @projects = repo.find_by_account(current_account.id, search_params, limit)
+        @invalid_params = result.invalid_params
+        @projects = repo.find_by_account(current_account.id, result.params, limit)
       end
     end
 

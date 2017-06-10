@@ -5,6 +5,7 @@
         input.search_form__query type="text" name="query" placeholder="Search..." value=params[:query]
         input.search_form__submit type="submit" value="Submit"
 
+      = error_message
       = render partial: 'shared/actions'
 
       .projects

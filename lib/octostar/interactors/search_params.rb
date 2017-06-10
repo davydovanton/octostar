@@ -2,13 +2,13 @@ require 'hanami/interactor'
 
 class SearchParams
   include Hanami::Interactor
-  expose :params, :error_messages
+  expose :params, :invalid_params
 
   def initialize(query)
     @query = query
 
     @params = {}
-    @error_messages = []
+    @invalid_params = []
   end
 
   def call
@@ -18,7 +18,7 @@ class SearchParams
       if VALID_COMMANDS.include?(key)
         @params[key] = value
       else
-        @error_messages << "#{key}:#{value}"
+        @invalid_params << "#{key}:#{value}"
       end
     end
   end

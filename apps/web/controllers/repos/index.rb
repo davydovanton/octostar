@@ -10,6 +10,7 @@ module Web::Controllers::Repos
     def call(params)
       if authenticated?
         result = SearchParams.new(params[:query]).call
+        @invalid = result.invalid_params
         @projects = repo.find_by_account(current_account.id, result.params, limit)
       end
     end

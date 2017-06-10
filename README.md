@@ -14,7 +14,6 @@ Improved search for your starred github repositories
 3. put query to firld and that's all
 
 ### Queries
-```
 You can use filters like:
 - **author** search by author;
 - **tag** search by specific tag (can be 1+);
@@ -30,6 +29,7 @@ author:plataform lang:ruby tag:rails authentication solution
 
 1. clone project
 2. call this commands (for `HANAMI_ENV=test` too)
+
 ```
 bundle exec hanami db create
 bundle exec hanami db migrate

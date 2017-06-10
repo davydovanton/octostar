@@ -6,12 +6,21 @@ class SearchParams
 
   def initialize(query)
     @query = query
-    @query.gsub!(INVALID_CHARS, '') if @query
+
+    @params = {}
+    @error_messages = []
   end
 
   def call
-    options = SearchQueryParser.new(@query).call
-    @params = options.select { |key, _| VALID_COMMANDS.include?(key) }
+    @query.gsub!(INVALID_CHARS, '') if @query
+
+    SearchQueryParser.new(@query).call.each do |key, value|
+      if VALID_COMMANDS.include?(key)
+        @params[key] = value
+      else
+        @error_messages << "#{key}:#{value}"
+      end
+    end
   end
 
   private

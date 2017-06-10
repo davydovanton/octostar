@@ -38,13 +38,6 @@ bundle exec hanami db migrate
 3. check tests (`bundle exec rspec`)
 4. that's all
 
-## TODO
-* tests
-* implement sync repos button
-* add development part to readme
-* add "push to heroku" button to readme
-* display error if option not found
-
 ## Copyright
 
 Released under MIT License.

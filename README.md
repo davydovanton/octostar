@@ -35,6 +35,9 @@ bundle exec hanami db create
 bundle exec hanami db migrate
 ```
 
+3. check tests (`bundle exec rspec`)
+4. that's all
+
 ## TODO
 * tests
 * implement sync repos button

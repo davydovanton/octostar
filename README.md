@@ -43,6 +43,9 @@ bundle exec hanami db migrate
 7. open console (`bundle exec hanami c`) and run `UpdateProjectsWorker.new.perform`
 8. that's all
 
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
 ## Copyright
 
 Released under MIT License.

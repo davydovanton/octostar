@@ -1,0 +1,36 @@
+{
+  "name": "octostar",
+  "description": "Improved search for your github stars",
+  "keywords": [
+    "github repoos",
+    "searching"
+  ],
+  "website": "https://octostar.herokuapp.com/",
+  "repository": "https://github.com/davydovanton/octostar",
+  "success_url": "/",
+  "env": {
+    "GITHUB_KEY": {
+      "description": "A key from github app."
+    },
+    "GITHUB_SECRET": {
+      "description": "A secret from github app."
+    }
+  },
+  "image": "heroku/ruby",
+  "addons": [
+    "openredis",
+    {
+      "plan": "heroku-postgresql",
+      "options": {
+        "version": "9.5"
+      }
+    }
+  ],
+  "environments": {
+    "test": {
+      "scripts": {
+        "test": "bundle exec rspec"
+      }
+    }
+  }
+}

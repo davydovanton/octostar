@@ -14,6 +14,10 @@
     },
     "GITHUB_SECRET": {
       "description": "A secret from github app."
+    },
+    "WEB_SESSIONS_SECRET": {
+      "description": "A secret key for hanami app.",
+      "generator": "secret"
     }
   },
   "image": "heroku/ruby",

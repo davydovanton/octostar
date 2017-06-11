@@ -28,15 +28,19 @@ author:plataform lang:ruby tag:rails authentication solution
 ## Development
 
 1. clone project
-2. call this commands (for `HANAMI_ENV=test` too)
+2. setup github key and secret in `.env.development` file
+3. call this commands (for `HANAMI_ENV=test` too)
 
 ```
 bundle exec hanami db create
 bundle exec hanami db migrate
 ```
 
-3. check tests (`bundle exec rspec`)
-4. that's all
+4. check tests (`bundle exec rspec`)
+5. start server (`bundle exec hanami s`)
+6. open `localhost:2300` and login
+7. open console (`bundle exec hanami c`) and run `UpdateProjectsWorker.new.perform`
+8. that's all
 
 ## Copyright
 

@@ -8,7 +8,7 @@
       = error_message
       = render partial: 'shared/actions'
 
-      .projects
+      .projects data-search='#{search_text}'
         .projects__displayed Displayed #{projects.count} projects
         = waiting_projects
         - projects.each do |project|

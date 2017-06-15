@@ -1,7 +1,7 @@
 module Web::Controllers::Repos
   class Index
     include Web::Action
-    expose :projects, :invalid_params
+    expose :projects, :invalid_params, :search_text
 
     def initialize
       @projects = []
@@ -11,6 +11,7 @@ module Web::Controllers::Repos
       if authenticated?
         result = SearchParams.new(params[:query]).call
 
+        @search_text = result.params[:text]
         @invalid_params = result.invalid_params
         @projects = repo.find_by_account(current_account.id, result.params, limit)
       end

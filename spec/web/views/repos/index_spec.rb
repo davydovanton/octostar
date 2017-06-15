@@ -24,7 +24,7 @@ RSpec.describe Web::Views::Repos::Index do
 
     context 'when invalid params contain something' do
       let(:exposures) { { invalid_params: ['test:test'] } }
-      it { expect(view.error_message.to_s).to eq "<div class=\".errors\">\nImvalid commands test:test\n</div>" }
+      it { expect(view.error_message.to_s).to eq "<div class=\".errors\">\nImvalid command(s) \n<b>test:test</b>\n</div>" }
     end
   end
 

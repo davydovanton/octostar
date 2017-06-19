@@ -8,3 +8,8 @@ services:
   - redis-server
 before_script:
   - bundle exec hanami db prepare
+deploy:
+  provider: heroku
+  api_key: HEROKU_KEY
+  app: octostar
+  run: "rake db:migrate"

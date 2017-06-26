@@ -6,7 +6,7 @@ module Services
 
     COMMITS_COUNT_ON_PAGE = 100
 
-    def initialize(requester = HttpRequest)
+    def initialize(requester = Octostar::HttpRequest)
       @requester = requester
     end
 

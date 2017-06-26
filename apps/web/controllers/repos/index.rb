@@ -9,7 +9,7 @@ module Web::Controllers::Repos
 
     def call(params)
       if authenticated?
-        result = SearchParams.new(params[:query]).call
+        result = Interactor::SearchParams.new(params[:query]).call
 
         @search_text = result.params[:text]
         @invalid_params = result.invalid_params

@@ -2,6 +2,6 @@ class GetStarredProjectsWorker
   include Sidekiq::Worker
 
   def perform(id)
-    NewProjectSaver.new.call(id)
+    Services::NewProjectSaver.new.call(id)
   end
 end

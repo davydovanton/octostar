@@ -1,25 +1,26 @@
 require_relative '../../http_request'
 
-class StarredProjectsGetter
-  API_URL = 'https://api.github.com/users/%{username}/starred?client_id=%{github_id}&client_secret=%{github_key}&page=%{page}&count=100'.freeze
+module Services
+  class StarredProjectsGetter
+    API_URL = 'https://api.github.com/users/%{username}/starred?client_id=%{github_id}&client_secret=%{github_key}&page=%{page}&count=100'.freeze
 
-  COMMITS_COUNT_ON_PAGE = 100
+    COMMITS_COUNT_ON_PAGE = 100
 
-  def initialize(requester = HttpRequest)
-    @requester = requester
-  end
-
-  def call(account)
-    projects = []
-
-    page = 1
-    while (raw_projects = get_response(account.login, page)) && !raw_projects.empty?
-      page += 1
-      raw_projects.each { |data| projects << project_information(data, account.id) }
+    def initialize(requester = HttpRequest)
+      @requester = requester
     end
 
-    projects
-  end
+    def call(account)
+      projects = []
+
+      page = 1
+      while (raw_projects = get_response(account.login, page)) && !raw_projects.empty?
+        page += 1
+        raw_projects.each { |data| projects << project_information(data, account.id) }
+      end
+
+      projects
+    end
 
   private
 
@@ -41,17 +42,18 @@ class StarredProjectsGetter
       }
     end
 
-  def get_response(username, page)
-    params = {
-      username: username,
-      page: page,
-      github_id: ENV['GITHUB_KEY'],
-      github_key: ENV['GITHUB_SECRET']
-    }
+    def get_response(username, page)
+      params = {
+        username: username,
+        page: page,
+        github_id: ENV['GITHUB_KEY'],
+        github_key: ENV['GITHUB_SECRET']
+      }
 
-    response = @requester.new(API_URL % params).get
-    return [] unless response.is_a?(Net::HTTPSuccess)
+      response = @requester.new(API_URL % params).get
+      return [] unless response.is_a?(Net::HTTPSuccess)
 
-    JSON.parse(response.body)
+      JSON.parse(response.body)
+    end
   end
 end

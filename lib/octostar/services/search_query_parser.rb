@@ -5,7 +5,7 @@ module Services
     OPTION_TOKEN = /\w+:\w+/
     SPASE_TOKEN = /\s/
 
-    SEPARATOR_CHAR = ':'
+    SEPARATOR_CHAR = ':'.freeze
 
     def initialize(query)
       @scanner = StringScanner.new(query.to_s)

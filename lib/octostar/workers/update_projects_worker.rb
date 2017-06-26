@@ -3,7 +3,7 @@ class UpdateProjectsWorker
 
   def perform
     AccountRepository.new.all.each do |account|
-      NewProjectSaver.new.call(account.id)
+      Services::NewProjectSaver.new.call(account.id)
     end
   end
 end

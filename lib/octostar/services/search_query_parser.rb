@@ -1,42 +1,44 @@
 require 'strscan'
 
-class SearchQueryParser
-  OPTION_TOKEN = /\w+:\w+/
-  SPASE_TOKEN = /\s/
+module Services
+  class SearchQueryParser
+    OPTION_TOKEN = /\w+:\w+/
+    SPASE_TOKEN = /\s/
 
-  SEPARATOR_CHAR = ':'
+    SEPARATOR_CHAR = ':'
 
-  def initialize(query)
-    @scanner = StringScanner.new(query.to_s)
-    @options = {}
-  end
+    def initialize(query)
+      @scanner = StringScanner.new(query.to_s)
+      @options = {}
+    end
 
-  def call
-    scan_options
-    text = scanner.scan(/.+/)
-    { text: text, **options }
-  end
+    def call
+      scan_options
+      text = scanner.scan(/.+/)
+      { text: text, **options }
+    end
 
   private
 
-  def scan_options
-    scanner.scan(SPASE_TOKEN)
-
-    while token = scanner.scan(OPTION_TOKEN)
-      process_option_toker(options, token)
+    def scan_options
       scanner.scan(SPASE_TOKEN)
+
+      while token = scanner.scan(OPTION_TOKEN)
+        process_option_toker(options, token)
+        scanner.scan(SPASE_TOKEN)
+      end
     end
-  end
 
-  def process_option_toker(options, token)
-    node, value = token.split(SEPARATOR_CHAR)
+    def process_option_toker(options, token)
+      node, value = token.split(SEPARATOR_CHAR)
 
-    if options[node.to_sym]
-      options[node.to_sym] = Array(options[node.to_sym]) << value
-    else
-      options[node.to_sym] = value
+      if options[node.to_sym]
+        options[node.to_sym] = Array(options[node.to_sym]) << value
+      else
+        options[node.to_sym] = value
+      end
     end
-  end
 
-  attr_reader :options, :scanner
+    attr_reader :options, :scanner
+  end
 end

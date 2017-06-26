@@ -1,5 +1,5 @@
-RSpec.describe SearchParams do
-  let(:result) { SearchParams.new(query).call }
+RSpec.describe Interactor::SearchParams do
+  let(:result) { Interactor::SearchParams.new(query).call }
   let(:query) { 'author:plataform lang:ruby tag:rails authentication solution' }
 
   it { expect(result.params).to eq(text: 'authentication solution', author: 'plataform', lang: 'ruby', tag: 'rails') }
